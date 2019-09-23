@@ -14,6 +14,7 @@ potential_id_files=[entrez_file]
 
 #END REQUIREMENTS
 
+transformer_name = 'Random gene list'
 valid_controls = ['number']
 default_control_values = {'number': 32}
 default_control_types = {'number': 'int'}
@@ -44,28 +45,29 @@ def get_genes(controls):
     for gene_id in random.sample(potential_ids, get_control(controls, 'number')):
         genes.append(GeneInfo(
                      gene_id = 'NCBIGene:%s' % gene_id,
+                     identifiers = GeneInfoIdentifiers(entrez='NCBIGene:%s' % gene_id),
                      attributes = [
                         Attribute(
                           name = 'source',
                           value = 'random gene',
-                          source = 'Random producer'
+                          source = transformer_name
                         )]))
     return genes
 
 def get_info():
     return TransformerInfo(
-        name = 'Random gene set producer',
+        name = transformer_name,
         function = 'producer',
         #operation = 'enrichment',
         #ui_label = 'HyperGeomEnrich',
         #source_url = 'http://software.broadinstitute.org/gsea/downloads.jsp',
-        description = 'Random gene set producer',
+        description = 'Random gene list producer',
         parameters = [Parameter(x, default_control_types[x], default_control_values[x]) for x in valid_controls],
-        required_attributes = ['identifiers.entrez','gene_symbol']
+        required_attributes = []
     )
 
 
 if __name__ == "__main__":
     os.system('wget -O %s.orig.gz ftp://ftp.ncbi.nih.gov/gene/DATA/gene_info.gz' % entrez_file)
     os.system('gunzip %s.orig.gz' % entrez_file)
-    os.system("awk -F\"\t\" '$1 == 9606 && $10 == \"protein-coding\" {print $3}' %s.orig > %s" % (entrez_file, entrez_file))
+    os.system("awk -F\"\t\" '$1 == 9606 && $10 == \"protein-coding\" {print $2}' %s.orig > %s" % (entrez_file, entrez_file))
