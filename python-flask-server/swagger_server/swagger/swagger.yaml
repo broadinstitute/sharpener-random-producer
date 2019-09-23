@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "Gene set producer for random genes."
   version: "1.2.0"
-  title: "STRING expander"
+  title: "Random gene set producer"
 host: "sharpener.ncats.io"
 basePath: "/random_producer"
 schemes:

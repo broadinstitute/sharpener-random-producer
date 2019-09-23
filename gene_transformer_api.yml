@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  title: STRING expander
+  title: Random gene set producer
   version: 1.2.0
   description: Gene set producer for random genes.
 host: sharpener.ncats.io
