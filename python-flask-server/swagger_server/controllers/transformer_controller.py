@@ -1,13 +1,11 @@
 import connexion
 import six
 
+from swagger_server.models.error_msg import ErrorMsg  # noqa: E501
 from swagger_server.models.gene_info import GeneInfo  # noqa: E501
 from swagger_server.models.transformer_info import TransformerInfo  # noqa: E501
 from swagger_server.models.transformer_query import TransformerQuery  # noqa: E501
 from swagger_server import util
-
-from swagger_server.controllers.random_producer import get_genes
-from swagger_server.controllers.random_producer import get_info
 
 
 def transform_post(query):  # noqa: E501
@@ -22,9 +20,7 @@ def transform_post(query):  # noqa: E501
     """
     if connexion.request.is_json:
         query = TransformerQuery.from_dict(connexion.request.get_json())  # noqa: E501
-
-    controls = {control.name:control.value for control in query.controls}
-    return get_genes(controls)
+    return 'do some magic!'
 
 
 def transformer_info_get():  # noqa: E501
@@ -32,6 +28,7 @@ def transformer_info_get():  # noqa: E501
 
     Provides information about the transformer. # noqa: E501
 
+
     :rtype: TransformerInfo
     """
-    return get_info()
+    return 'do some magic!'
