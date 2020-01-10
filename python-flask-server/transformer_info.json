@@ -1,0 +1,26 @@
+{
+    "name": "Random gene list",
+    "label": "Random",
+    "version": "1.3.0",
+    "function": "producer",
+    "description": "Random gene list producer",
+    "properties": {
+        "list_predicate": "related_to",
+        "member_predicate": "related_to",
+        "source_url": null,
+        "method": null
+    },
+    "parameters": [
+        {
+            "default": "32",
+            "name": "number of genes",
+            "type": "int",
+            "biolink_class": null,
+            "allowed_values": null,
+            "allowed_range": null,
+            "suggested_values": null,
+            "lookup_url": null
+        }
+    ],
+    "required_attributes": []
+}
