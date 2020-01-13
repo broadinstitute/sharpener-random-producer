@@ -4,7 +4,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "random-producer"
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 
 # To install the library, run the following
 #
@@ -18,10 +18,10 @@ REQUIRES = ["connexion"]
 setup(
     name=NAME,
     version=VERSION,
-    description="STRING expander",
+    description="Random gene list",
     author_email="",
     url="",
-    keywords=["Swagger", "STRING expander"],
+    keywords=["Swagger", "Random gene list"],
     install_requires=REQUIRES,
     packages=find_packages(),
     package_data={'': ['swagger/swagger.yaml']},
@@ -29,7 +29,7 @@ setup(
     entry_points={
         'console_scripts': ['swagger_server=swagger_server.__main__:main']},
     long_description="""\
-    Gene set producer for random genes.
+    API for random gene list producer.
     """
 )
 
